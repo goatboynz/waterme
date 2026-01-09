@@ -1,12 +1,9 @@
 #!/usr/bin/with-contenv bashio
+set -e
 
-bashio::log.info "Starting WaterMe Irrigation Addon..."
-
-# Start Nginx in background
 bashio::log.info "Starting Nginx..."
-nginx -g "daemon off;" &
+nginx -c /etc/nginx.conf &
 
-# Start Backend
-bashio::log.info "Starting FastAPI Backend..."
+bashio::log.info "Starting WaterMe Backend..."
 cd /app/backend
 exec uvicorn main:app --host 0.0.0.0 --port 8080

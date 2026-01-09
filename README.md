@@ -1,20 +1,20 @@
-# ðŸ’§ WaterMe - Advanced Irrigation for Home Assistant
+# Ã°Å¸â€™Â§ WaterMe - Advanced Irrigation for Home Assistant
 
 WaterMe is a premium, high-performance Home Assistant Addon designed for sophisticated grow room and garden irrigation management. It features a stunning glassmorphism UI, granular control over rooms and zones, and a robust background scheduler for precise irrigation cycles.
 
 ![WaterMe UI Preview](https://github.com/goatboynz/waterme/raw/main/waterme_ui_mockup.png)
 *(Note: Mockup for visualization; actual UI is live and integrated)*
 
-## âœ¨ Features
+## Ã¢Å“Â¨ Features
 
-- ðŸ’Ž **Premium Interface**: Modern glassmorphism design with dark mode and vibrant accents.
-- ðŸ  **Room & Zone Hierarchy**: Organize your irrigation by physical spaces and specific zones.
-- ðŸ”Œ **HA Entity Selection**: Direct integration with existing Home Assistant switches (Pumps, Solenoids, etc.).
-- ðŸ“… **Advanced Scheduling**: Customizable P1 and P2 events with precise duration and day-of-week settings.
-- âš¡ **Manual Overrides**: Toggle zones/events on the fly or trigger an immediate "Run Now" cycle.
-- ðŸ›¡ï¸ **Reliable Execution**: Standalone background scheduler that respects your configurations even after restarts.
+- Ã°Å¸â€™Å½ **Premium Interface**: Modern glassmorphism design with dark mode and vibrant accents.
+- Ã°Å¸ÂÂ  **Room & Zone Hierarchy**: Organize your irrigation by physical spaces and specific zones.
+- Ã°Å¸â€Å’ **HA Entity Selection**: Direct integration with existing Home Assistant switches (Pumps, Solenoids, etc.).
+- Ã°Å¸â€œâ€¦ **Advanced Scheduling**: Customizable P1 and P2 events with precise duration and day-of-week settings.
+- Ã¢Å¡Â¡ **Manual Overrides**: Toggle zones/events on the fly or trigger an immediate "Run Now" cycle.
+- Ã°Å¸â€ºÂ¡Ã¯Â¸Â **Reliable Execution**: Standalone background scheduler that respects your configurations even after restarts.
 
-## ðŸš€ Installation
+## Ã°Å¸Å¡â‚¬ Installation
 
 Installing WaterMe is simple via the Home Assistant Add-on Store:
 
@@ -28,7 +28,7 @@ Installing WaterMe is simple via the Home Assistant Add-on Store:
 7. Click **WaterMe**, then click **Install**.
 8. Enable **Show in sidebar** and click **Start**.
 
-## ðŸ› ï¸ Usage
+## Ã°Å¸â€ºÂ Ã¯Â¸Â Usage
 
 1. **Add a Room**: Click "+ Add Room" to create a new area (e.g., "Flower Room").
 2. **Configure Zones**: Inside a room, click "+ Add Zone".
@@ -36,9 +36,9 @@ Installing WaterMe is simple via the Home Assistant Add-on Store:
 4. **Set Schedules**: Expand a zone to add P1 (Primary) or P2 (Secondary) events.
 5. **Control**: Use the toggles to enable/disable zones/events, or click "Run Now" for manual watering.
 
-## ðŸ¤ Support
+## Ã°Å¸Â¤Â Support
 
 If you encounter issues or have suggestions, please open an issue on the [GitHub repository](https://github.com/goatboynz/waterme/issues).
 
 ---
-*Created with â¤ï¸ by Antigravity AI for premium grow management.*
+*Created with Ã¢ÂÂ¤Ã¯Â¸Â by Antigravity AI for premium grow management.*

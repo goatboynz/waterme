@@ -86,7 +86,7 @@ function App() {
     <div className="container">
       <header className="header glass-card">
         <div className="logo">
-          <span className="icon">ÃƒÂ°Ã…Â¸Ã¢â‚¬â„¢Ã‚Â§</span>
+          <span className="icon">ÃƒÆ’Ã‚Â°Ãƒâ€¦Ã‚Â¸ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢Ãƒâ€šÃ‚Â§</span>
           <h1>WaterMe</h1>
         </div>
         <button className="btn-primary" onClick={() => setShowAddRoom(true)}>+ Add Room</button>
@@ -233,7 +233,7 @@ function ZoneItem({ zone, onUpdate, onToggle, onTrigger }: { zone: Zone, entitie
         <div className="zone-actions">
           <button className="btn-mini btn-run" onClick={onTrigger} disabled={!zone.enabled}>Run Now</button>
           <button className="btn-mini" onClick={() => setShowEvents(!showEvents)}>
-            {zone.events.length} Events {showEvents ? 'ÃƒÂ¢Ã¢â‚¬â€œÃ‚Â´' : 'ÃƒÂ¢Ã¢â‚¬â€œÃ‚Â¾'}
+            {zone.events.length} Events {showEvents ? 'ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“Ãƒâ€šÃ‚Â´' : 'ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“Ãƒâ€šÃ‚Â¾'}
           </button>
         </div>
       </div>

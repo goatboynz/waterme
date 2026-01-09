@@ -24,20 +24,17 @@ COPY backend/ ./backend/
 COPY frontend/dist /usr/share/nginx/html
 
 # Copy rootfs and scripts
-COPY rootfs /
+COPY rootfs/nginx.conf /etc/nginx.conf
 COPY run.sh /
 
 # Set permissions
 RUN chmod a+x /run.sh
 
 # Labels
-ARG BUILD_ARCH
-ARG BUILD_VERSION
 LABEL \
     io.hass.name="WaterMe" \
     io.hass.description="Advanced Irrigation System for Home Assistant" \
-    io.hass.arch="${BUILD_ARCH}" \
     io.hass.type="addon" \
-    io.hass.version="${BUILD_VERSION}"
+    io.hass.version="0.1.5"
 
-ENTRYPOINT ["/run.sh"]
+CMD [ "/run.sh" ]

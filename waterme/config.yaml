@@ -1,6 +1,6 @@
 name: "WaterMe"
 description: "Advanced Irrigation System for Home Assistant"
-version: "0.1.4"
+version: "0.1.5"
 slug: "waterme"
 arch:
   - aarch64
@@ -8,7 +8,7 @@ arch:
   - armhf
   - armv7
   - i386
-init: true
+init: false
 ingress: true
 ingress_port: 8000
 panel_icon: "mdi:sprinkler-variant"

@@ -6,10 +6,9 @@ FROM ${BUILD_FROM}
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Install system dependencies
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-        nginx \
-    && rm -rf /var/lib/apt/lists/*
+RUN apk add --no-cache \
+    nginx \
+    && mkdir -p /run/nginx
 
 WORKDIR /app
 
@@ -26,13 +25,18 @@ COPY frontend/dist /usr/share/nginx/html
 # Copy rootfs (S6 services and configs)
 COPY rootfs /
 
-# Labeling
+# Ensure scripts are executable
+RUN chmod +x /etc/services.d/nginx/run /etc/services.d/backend/run
+
+# Labels
+ARG BUILD_ARCH
+ARG BUILD_VERSION
 LABEL \
     io.hass.name="WaterMe" \
     io.hass.description="Advanced Irrigation System for Home Assistant" \
     io.hass.arch="${BUILD_ARCH}" \
     io.hass.type="addon" \
-    io.hass.version="0.1.1"
+    io.hass.version="${BUILD_VERSION}"
 
 # Use S6-Overlay
 ENTRYPOINT ["/init"]

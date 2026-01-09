@@ -8,6 +8,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 # Install system dependencies
 RUN apk add --no-cache \
     nginx \
+    bash \
     && mkdir -p /run/nginx
 
 WORKDIR /app
@@ -22,11 +23,12 @@ COPY backend/ ./backend/
 # Copy pre-built frontend assets
 COPY frontend/dist /usr/share/nginx/html
 
-# Copy rootfs (S6 services and configs)
+# Copy rootfs and scripts
 COPY rootfs /
+COPY run.sh /
 
-# Ensure scripts are executable
-RUN chmod +x /etc/s6-overlay/s6-rc.d/nginx/run /etc/s6-overlay/s6-rc.d/backend/run
+# Set permissions
+RUN chmod a+x /run.sh
 
 # Labels
 ARG BUILD_ARCH
@@ -38,5 +40,4 @@ LABEL \
     io.hass.type="addon" \
     io.hass.version="${BUILD_VERSION}"
 
-# Use S6-Overlay
-ENTRYPOINT ["/init"]
+ENTRYPOINT ["/run.sh"]

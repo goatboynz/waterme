@@ -7,28 +7,40 @@ COPY frontend/ ./
 RUN npm run build
 
 # Stage 2: Final Image
-FROM python:3.11-slim-bookworm
+ARG BUILD_FROM
+FROM ${BUILD_FROM}
+
+# Set shell
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Install system dependencies
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    nginx \
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        nginx \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
-# Copy backend
+# Copy backend requirements and install
 COPY backend/requirements.txt ./backend/
-RUN pip install --no-cache-dir -r ./backend/requirements.txt
+RUN pip3 install --no-cache-dir -r ./backend/requirements.txt
+
+# Copy backend source
 COPY backend/ ./backend/
 
 # Copy frontend build to nginx
 COPY --from=frontend-builder /app/frontend/dist /usr/share/nginx/html
 
-# Copy nginx config
-COPY rootfs/etc/nginx/nginx.conf /etc/nginx/nginx.conf
+# Copy rootfs (S6 services and configs)
+COPY rootfs /
 
-# Entrypoint script
-COPY rootfs/usr/bin/run.sh /usr/bin/run.sh
-RUN chmod +x /usr/bin/run.sh
+# Labeling
+LABEL \
+    io.hass.name="WaterMe" \
+    io.hass.description="Advanced Irrigation System for Home Assistant" \
+    io.hass.arch="${BUILD_ARCH}" \
+    io.hass.type="addon" \
+    io.hass.version="0.1.0"
 
-CMD ["/usr/bin/run.sh"]
+# Use S6-Overlay
+ENTRYPOINT ["/init"]

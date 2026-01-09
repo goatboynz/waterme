@@ -1,12 +1,4 @@
-# Stage 1: Build Frontend
-FROM node:20-alpine AS frontend-builder
-WORKDIR /app/frontend
-COPY frontend/package*.json ./
-RUN npm install
-COPY frontend/ ./
-RUN npm run build
-
-# Stage 2: Final Image
+# Final Image
 ARG BUILD_FROM
 FROM ${BUILD_FROM}
 
@@ -28,8 +20,8 @@ RUN pip3 install --no-cache-dir -r ./backend/requirements.txt
 # Copy backend source
 COPY backend/ ./backend/
 
-# Copy frontend build to nginx
-COPY --from=frontend-builder /app/frontend/dist /usr/share/nginx/html
+# Copy pre-built frontend assets
+COPY frontend/dist /usr/share/nginx/html
 
 # Copy rootfs (S6 services and configs)
 COPY rootfs /
@@ -40,7 +32,7 @@ LABEL \
     io.hass.description="Advanced Irrigation System for Home Assistant" \
     io.hass.arch="${BUILD_ARCH}" \
     io.hass.type="addon" \
-    io.hass.version="0.1.0"
+    io.hass.version="0.1.1"
 
 # Use S6-Overlay
 ENTRYPOINT ["/init"]

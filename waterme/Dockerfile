@@ -26,7 +26,7 @@ COPY frontend/dist /usr/share/nginx/html
 COPY rootfs /
 
 # Ensure scripts are executable
-RUN chmod +x /etc/services.d/nginx/run /etc/services.d/backend/run
+RUN chmod +x /etc/s6-overlay/s6-rc.d/nginx/run /etc/s6-overlay/s6-rc.d/backend/run
 
 # Labels
 ARG BUILD_ARCH

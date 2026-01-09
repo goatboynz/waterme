@@ -1,0 +1,16 @@
+**/node_modules/
+**/__pycache__/
+**/.git/
+**/.vite/
+**/dist/
+# Note: Since I pre-built the frontend, I DO need waterme/frontend/dist/
+# But I should ignore it in the root if I'm copying it specifically?
+# Wait, Docker copies from the context.
+# I want to IGNORE the source code in frontend but KEEP dist.
+# Actually, it's easier to just ignore node_modules which is the biggest part.
+node_modules/
+frontend/node_modules/
+backend/venv/
+.env
+*.db
+*.sqlite3
